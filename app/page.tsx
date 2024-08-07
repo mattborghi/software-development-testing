@@ -7,15 +7,7 @@ export default function Page() {
     <div className="wrapper">
       <h1>Home</h1>
       <Link href="/get">Issues</Link>
-      <form
-        action={submitForm}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: "flex-start",
-        }}
-      >
+      <form action={submitForm}>
         <textarea
           name="description"
           placeholder="Issue description:"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fetchIssues } from "../data";
+import "./page.css";
 
 export default async function Page() {
   const issues = await fetchIssues();
@@ -9,7 +10,7 @@ export default async function Page() {
     <div>
       <h1>Issues</h1>
       <Link href="/">Home</Link>
-      <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <ul>
         {issues &&
           issues.map((issue, index) => (
             <li key={index}>
