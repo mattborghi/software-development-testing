@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { submitForm } from "./actions";
+import "./issues.css";
 
 export default function Page() {
   return (
-    <div>
+    <div className="wrapper">
       <h1>Home</h1>
-      <Link href="/about">About</Link>
+      <Link href="/get">Issues</Link>
       <form
         action={submitForm}
         style={{
@@ -16,7 +17,7 @@ export default function Page() {
         }}
       >
         <textarea
-          name="issueDescription"
+          name="description"
           placeholder="Issue description:"
           required
         ></textarea>
