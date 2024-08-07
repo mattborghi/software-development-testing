@@ -3,6 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "db:seed": "node db/index.js",
+    "db:run": "docker-compose up --force-recreate -V",
     "start": "next start",
     "test:e2e": "playwright test"
   },
@@ -16,6 +18,7 @@
     "@playwright/test": "^1.46.0",
     "@types/node": "22.1.0",
     "@types/react": "18.3.3",
+    "dotenv": "^16.4.5",
     "typescript": "5.5.4"
   }
 }
