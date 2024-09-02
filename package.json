@@ -4,11 +4,16 @@
     "dev": "next dev",
     "build": "next build",
     "db:seed": "node db/index.js",
-    "db:run": "docker-compose up --force-recreate -V",
+    "db:run": "docker-compose up --force-recreate -V db",
+    "db:run:test": "docker-compose -f test.docker-compose.yaml up --force-recreate -V -d db",
     "start": "next start",
-    "test:e2e": "playwright test"
+    "browser:update": "pnpm exec playwright install",
+    "pretest:e2e": "pnpm browser:update && pnpm db:run:test",
+    "test:e2e": "NODE_ENV=test playwright test"
   },
   "dependencies": {
+    "@coreui/icons": "^3.0.1",
+    "@coreui/icons-react": "^2.3.0",
     "mysql2": "^3.11.0",
     "next": "latest",
     "react": "^18.3.1",
