@@ -1,14 +1,16 @@
 "use server";
 
-import { createIssue } from "./db";
-import { Issue } from "./types";
+import pool from "./db";
 
-export async function submitForm(formData: FormData) {
+export async function fetchTickets() {
   "use server";
-  const issue = Object.fromEntries(formData) as Issue;
-  console.log({ issue });
-  createIssue(
-    "INSERT INTO issue (name, email, description) VALUES (?, ?, ?)",
-    issue
-  );
+  try {
+    const db = await pool.getConnection();
+    const query = "SELECT * FROM tickets";
+    const [tickets] = await db.query(query);
+    db.release();
+    return Response.json({ data: tickets }, { status: 200 });
+  } catch (error) {
+    return Response.json({ error }, { status: 500 });
+  }
 }
