@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import pool from "../../../db";
 
 export async function DELETE(
@@ -10,6 +11,7 @@ export async function DELETE(
     const query = "DELETE FROM tickets WHERE id = ?";
     await db.execute(query, [ticketId]);
     db.release();
+    revalidatePath("/");
     return Response.json({}, { status: 200 });
   } catch (error) {
     return Response.json({ error }, { status: 500 });

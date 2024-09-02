@@ -15,21 +15,20 @@ const liStyle = {
 const iconWrapperStyle = { width: "20px" };
 
 export default function TicketItem({ data }: Props) {
-  // TODO: Does not revalidate.
-  // Maybe is best to use another tool like swr or @tanstack/query.
   const handleRemove = async () => {
-    const response = await fetch(`/v1/tickets/${data.id}`, {
+    const result = await fetch(`/v1/tickets/${data.id}`, {
       method: "DELETE",
     });
-    console.log("Deleted ticket!", response.ok);
+    if (result.status === 500) console.error(result);
+    else console.log("Deleted ticket with id: ", data.id);
   };
 
   return (
-    <li style={liStyle}>
+    <li role="listitem" style={liStyle}>
       Ticket Creator: {data.name}, Email: {data.email}, Description:{" "}
       {data.description}
-      <div style={iconWrapperStyle}>
-        <CIcon color="red" icon={cilTrash} onClick={handleRemove} />
+      <div role="button" style={iconWrapperStyle} onClick={handleRemove}>
+        <CIcon color="red" icon={cilTrash} />
       </div>
     </li>
   );

@@ -1,9 +1,9 @@
 import { test, expect, Page } from "@playwright/test";
 import { Ticket } from "../src/types";
-import * as crypto from "node:crypto";
+import { randomBytes } from "crypto";
 
 const data: Omit<Ticket, "id"> = {
-  name: crypto.randomBytes(20).toString("hex"),
+  name: randomBytes(20).toString("hex"),
   email: "email@google.com",
   description: "Ticket description",
 };
@@ -23,14 +23,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/create");
 });
 
-test("create a new ticket", async ({ page }) => {
-  await fillFormAndSubmit(page);
-
-  // Assert that the ticket was created successfully
-  await expect(page.locator("h3")).toHaveText("Ticket submitted correctly!");
-});
-
-test("assess ticket is listed as expected", async ({ page }) => {
+test("delete a ticket", async ({ page }) => {
   await fillFormAndSubmit(page);
 
   await page.goto("/");
@@ -38,4 +31,12 @@ test("assess ticket is listed as expected", async ({ page }) => {
   const expectedTicketList = `Ticket Creator: ${data.name}, Email: ${data.email}, Description: ${data.description}`;
 
   await expect(page.getByText(expectedTicketList).last()).toBeVisible();
+
+  const buttonSelector = `li[role="listitem"]:has-text("${data.name}") div[role="button"]`;
+  await page.locator(buttonSelector).click();
+
+  await page.goto("create");
+  await page.goto("/");
+
+  await expect(page.getByText(data.name)).not.toBeVisible();
 });
