@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "db:seed": "node db/index.js",
-    "db:run": "docker-compose up --force-recreate -V db",
+    "db:run": "docker-compose -f dev.docker-compose.yaml up --force-recreate -V db",
     "db:run:test": "docker-compose -f test.docker-compose.yaml up --force-recreate -V -d db",
     "start": "next start",
     "browser:update": "pnpm exec playwright install",

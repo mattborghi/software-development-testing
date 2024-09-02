@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - .env.test.local
+    ports:
+      - 3307:3307
+    expose:
+      - 3307
+    volumes:
+      - test-db:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
+volumes:
+  test-db:
