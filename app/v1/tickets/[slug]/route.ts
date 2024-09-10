@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import pool from "../../../db";
+import DB from "../../../db";
 
 export async function DELETE(
   _: Request,
@@ -7,10 +7,9 @@ export async function DELETE(
 ) {
   const ticketId = params.slug;
   try {
-    const db = await pool.getConnection();
+    const db = new DB();
     const query = "DELETE FROM tickets WHERE id = ?";
-    await db.execute(query, [ticketId]);
-    db.release();
+    await db.executeQuery(query, [ticketId]);
     revalidatePath("/");
     return Response.json({}, { status: 200 });
   } catch (error) {
