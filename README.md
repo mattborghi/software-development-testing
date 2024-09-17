@@ -14,3 +14,4 @@
 ## Profiling
 
 - Tried running Lighthouse. Output files are located in `profiling/lighthouse`.
+- Setup `@next/bundle-analyzer` (based on [this](https://nextjs.org/docs/app/building-your-application/optimizing/package-bundling) docs) and run it with `pnpm run build:analyze`.
