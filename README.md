@@ -10,3 +10,7 @@
 
 1. Create an `.env.test.local` file from the `.env.template`.
 2. Run e2e tests with `pnpm run test:e2e`.
+
+## Profiling
+
+- Tried running Lighthouse. Output files are located in `profiling/lighthouse`.
