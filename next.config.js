@@ -2,7 +2,6 @@
 const nextConfig = {
     experimental: {
         optimizePackageImports: ['mysql2'],
-        webpackMemoryOptimizations: true,
     }
 }
 
