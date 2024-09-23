@@ -1,27 +1,22 @@
-# Next.js + Playwright
+# Instructions
 
-This example shows how to configure Playwright to work with Next.js.
+1. `pnpm i` to install dependencies.
+2. Create an `.env.local` file from the `.env.template`.
+3. `pnpm run db:run` to spin up the MySQL server.
+4. While the db is running, run `pnpm run db:seed` to populate the DB.
+5. `pnpm run dev` to run the app.
 
-## Deploy your own
+## Testing e2e
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-playwright)
+1. Create an `.env.test.local` file from the `.env.template`.
+2. Run e2e tests with `pnpm run test:e2e`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-playwright&project-name=with-playwright&repository-name=with-playwright)
+## Profiling
 
-## How to use
+- Tried running Lighthouse. Output files are located in `profiling/lighthouse`.
+- Setup `@next/bundle-analyzer` (based on [this](https://nextjs.org/docs/app/building-your-application/optimizing/package-bundling) docs) and run it with `pnpm run build:analyze`.
+- Recorded a heap profile using `node --heap-prof node_modules/next/dist/bin/next build` to look for memory issues. This generated a `.heapprofile` and is inspected by loading the file using Chome Dev Tools on the memory tab.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+## Testing BDD with Cucumber
 
-```bash
-npx create-next-app --example with-playwright with-playwright-app
-```
-
-```bash
-yarn create next-app --example with-playwright with-playwright-app
-```
-
-```bash
-pnpm create next-app --example with-playwright with-playwright-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. Run `pnpm run test:bdd`.

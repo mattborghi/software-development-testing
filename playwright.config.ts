@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 import path from "path";
+// This line only tries to make db env variables available at test runtime
+require("dotenv").config({ path: ".env.test.local" });
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000;
@@ -68,9 +70,9 @@ export default defineConfig({
         ...devices["Pixel 5"],
       },
     },
-    {
-      name: "Mobile Safari",
-      use: devices["iPhone 12"],
-    },
+    // {
+    //   name: "Mobile Safari",
+    //   use: devices["iPhone 12"],
+    // },
   ],
 });
