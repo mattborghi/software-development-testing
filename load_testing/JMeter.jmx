@@ -10,7 +10,7 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - Initial Page Load">
-        <intProp name="ThreadGroup.num_threads">1000</intProp>
+        <intProp name="ThreadGroup.num_threads">32</intProp>
         <intProp name="ThreadGroup.ramp_time">12</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -20,7 +20,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
           <stringProp name="HTTPSampler.path">/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -65,7 +65,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">/home/altairiv/Desktop/Ekumen/training/testing_l1/e2e-with-playwright/load_testing/intial_page_load_1kusers.csv</stringProp>
+          <stringProp name="filename">/home/altairiv/Desktop/Ekumen/training/testing_l1/e2e-with-playwright/load_testing/initial_page_load_32_users.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
@@ -79,7 +79,7 @@
       </ConfigTestElement>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - Tickets Functionality">
-        <intProp name="ThreadGroup.num_threads">1000</intProp>
+        <intProp name="ThreadGroup.num_threads">32</intProp>
         <intProp name="ThreadGroup.ramp_time">12</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -134,7 +134,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">/home/altairiv/Desktop/Ekumen/training/testing_l1/e2e-with-playwright/load_testing/tickets_functionality_1kusers.csv</stringProp>
+          <stringProp name="filename">/home/altairiv/Desktop/Ekumen/training/testing_l1/e2e-with-playwright/load_testing/tickets_functionality_32_users.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
