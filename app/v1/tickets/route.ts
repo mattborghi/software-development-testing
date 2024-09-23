@@ -24,3 +24,26 @@ export async function POST(request: Request) {
     );
   }
 }
+
+/**
+ * Created method just for load testing purposes.
+ * The endpoint GET /v1/tickets is reached by SSR.
+ * We could, at some point, move the SSR-page to CSR
+ * and use this endpoint.
+ */
+export async function GET() {
+  "use server";
+  try {
+    const db = new DB();
+    const query = "SELECT * FROM tickets";
+    const tickets = await db.executeQuery(query);
+    return Response.json({ data: tickets }, { status: 200 });
+  } catch (error) {
+    return Response.json(
+      {
+        error,
+      },
+      { status: 500 }
+    );
+  }
+}
