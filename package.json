@@ -10,7 +10,8 @@
     "start": "next start",
     "browser:update": "pnpm exec playwright install",
     "pretest:e2e": "pnpm browser:update && pnpm db:run:test",
-    "test:e2e": "NODE_ENV=test playwright test"
+    "test:e2e": "NODE_ENV=test playwright test",
+    "test:bdd": "cucumber-js"
   },
   "dependencies": {
     "@coreui/icons": "^3.0.1",
@@ -22,10 +23,12 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^11.0.1",
     "@playwright/test": "^1.46.0",
     "@types/node": "22.1.0",
     "@types/react": "18.3.3",
     "dotenv": "^16.4.5",
+    "ts-node": "^10.9.2",
     "typescript": "5.5.4"
   }
 }
